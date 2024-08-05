@@ -1,0 +1,182 @@
+{% load static %}
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+<link rel="stylesheet" href="{% static 'css/my.css' %}">
+	<style>
+			
+		body{
+			background-image: url("{% static 'images/2.3.jpg' %}");
+			background-repeat: no-repeat;
+  			background-size: 100% 110%;
+		}
+		
+.on {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.on:hover {background-color: #3e8e41}
+
+.on:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+	
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cta {
+    display: flex;
+    padding: 10px 45px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color: white;
+    background: #6225E6;
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+    transform: skewX(-15deg);
+}
+
+.cta:focus {
+   outline: none; 
+}
+
+.cta:hover {
+    transition: 0.5s;
+    box-shadow: 10px 10px 0 #FBC638;
+}
+
+.cta span:nth-child(2) {
+    transition: 0.5s;
+    margin-right: 0px;
+}
+
+.cta:hover  span:nth-child(2) {
+    transition: 0.5s;
+    margin-right: 45px;
+}
+
+  span {
+    transform: skewX(15deg) 
+  }
+
+  span:nth-child(2) {
+    width: 20px;
+    margin-left: 30px;
+    position: relative;
+    top: 12%;
+  }
+  
+/**************SVG****************/
+
+path.one {
+    transition: 0.4s;
+    transform: translateX(-60%);
+}
+
+path.two {
+    transition: 0.5s;
+    transform: translateX(-30%);
+}
+
+.cta:hover path.three {
+    animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover path.one {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover path.two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+}
+
+/* SVG animations */
+
+@keyframes color_anim {
+    0% {
+        fill: white;
+    }
+    50% {
+        fill: #FBC638;
+    }
+    100% {
+        fill: white;
+    }
+}
+
+	</style>
+
+</head>
+<body >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-size:30px;"> Parent Notification and Announcement</a>
+    <right>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+	
+	{% if user.is_authenticated %}
+        <a class="nav-link " aria-current="page" href="{% url 'home' %}" style="font-size:20px;padding-right:40;">Home</a>
+	
+	<a class="nav-link " aria-current="page" href="{% url 'about' %}" style="font-size:20px;padding-right:40;">About US</a>
+	
+	<a class="nav-link " aria-current="page" href="https://docs.google.com/forms/d/e/1FAIpQLScCUJUP_Du00SlVHmp_ykBWWG5EY4bgfP5W9gYK9IIecYm94Q/viewform?usp=sf_link" style="font-size:20px;padding-right:40;">Feedback</a>
+
+	<a class="nav-link " href="{% url 'user_logout' %}" style="font-size:20px;padding-right:40;">Logout</a>
+
+	{% else %}
+	<a class="nav-link " aria-current="page" href="{% url 'main' %}" style="font-size:20px;padding-right:40;">Home</a>
+        <a class="nav-link " href="{% url 'user_signup' %}" style="font-size:20px;padding-right:40;">SignUp</a>
+	<a class="nav-link " href="{% url 'user_login' %}" style="font-size:20px;padding-right:40;">Login</a>
+        
+	{% endif %}
+        
+      </div>
+    </div>
+</right>
+  </div>
+</nav>
+	{% block content %}{% endblock %}
+
+
+</body>
+</html>
